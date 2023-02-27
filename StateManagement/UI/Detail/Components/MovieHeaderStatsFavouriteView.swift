@@ -49,7 +49,9 @@ struct MovieHeaderStatsFavouriteView: View {
 
             dividerView
 
-            Button(action: { isFavourite.toggle() }) {
+            Button(action: {
+                isFavourite.toggle()
+            }) {
                 Image(systemName: isFavourite ? "heart.fill" : "heart")
                     .foregroundColor(isFavourite ? Color.purple : .primary)
                     .frame(maxWidth: .infinity)

@@ -14,7 +14,11 @@ class MovieDetailViewModel: ObservableObject {
     @Published var movie: Movie
     @Published var recommendedMovies: [Movie]?
     @Published var error: Error?
-    @Published var isFavourite: Bool = false
+    @Published var isFavourite: Bool = false {
+        didSet {
+            localStorageRepository.setFavourite(movie: movie, favourite: isFavourite)
+        }
+    }
 
     init(movie: Movie) {
         self.movie = movie
@@ -25,7 +29,9 @@ class MovieDetailViewModel: ObservableObject {
         await loadMovieDetails()
         await loadRecommendedMovies()
     }
+}
 
+extension MovieDetailViewModel {
     private func loadMovieDetails() async {
         do {
             let backdropPath = try? await apiRepository.getBackdropPath(for: movie)
@@ -53,10 +59,5 @@ class MovieDetailViewModel: ObservableObject {
         await MainActor.run { [movies] in
             self.recommendedMovies = movies
         }
-    }
-
-    func updateIsFavourite(_ value: Bool) {
-        localStorageRepository.setFavourite(movie: movie, favourite: value)
-        isFavourite = value
     }
 }

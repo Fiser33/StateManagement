@@ -25,8 +25,10 @@ class CollectionViewModel: ObservableObject {
             self.error = error
         }
     }
+}
 
-    func loadPosters() async {
+extension CollectionViewModel {
+    private func loadPosters() async {
         for index in movies.indices {
             let movie = movies[index]
             if let posterPath = try? await apiRepository.getPosterPath(for: movie) {

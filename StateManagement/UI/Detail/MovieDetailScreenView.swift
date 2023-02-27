@@ -11,13 +11,6 @@ struct MovieDetailScreenView: View {
     @EnvironmentObject var appState: AppStateStore
     @StateObject var model: MovieDetailViewModel
 
-    var favouriteBinding: Binding<Bool> {
-        Binding(
-            get: { model.isFavourite },
-            set: { model.updateIsFavourite($0) }
-        )
-    }
-
     var movieTitle: String {
         let originalTitle = model.movie.originalTitle ?? model.movie.title
         return appState.showOriginalTitle ? originalTitle : model.movie.title
@@ -29,7 +22,7 @@ struct MovieDetailScreenView: View {
 
     var body: some View {
         ScrollView {
-            MovieHeaderView(isFavourite: favouriteBinding, movie: model.movie)
+            MovieHeaderView(isFavourite: $model.isFavourite, movie: model.movie)
 
             Text(model.movie.overview ?? "")
                 .frame(maxWidth: .infinity, alignment: .leading)

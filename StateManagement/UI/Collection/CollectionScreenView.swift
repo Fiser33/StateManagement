@@ -37,7 +37,11 @@ struct CollectionScreenView: View {
         }
         .navigationTitle("Movies")
         .toolbar {
-            Button(action: { withAnimation { layoutMode = layoutMode.oposite } }) {
+            Button(action: {
+                withAnimation {
+                    layoutMode = layoutMode.oposite
+                }
+            }) {
                 Image(systemName: "square.grid.\(layoutMode.oposite.numberOfColumns)x3.fill")
             }
         }
