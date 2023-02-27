@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieHeaderStatsFavouriteView: View {
-    @Binding var isFavourite: Bool
+    var isFavourite: Bool
 
     let duration: Int?
     let popularity: Double?
@@ -50,7 +50,7 @@ struct MovieHeaderStatsFavouriteView: View {
             dividerView
 
             Button(action: {
-                isFavourite.toggle()
+                // TODO: Store to favourites
             }) {
                 Image(systemName: isFavourite ? "heart.fill" : "heart")
                     .foregroundColor(isFavourite ? Color.purple : .primary)
@@ -62,6 +62,6 @@ struct MovieHeaderStatsFavouriteView: View {
 
 struct MovieHeaderStatsFavouriteView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieHeaderStatsFavouriteView(isFavourite: .constant(true), duration: 90, popularity: 0.75)
+        MovieHeaderStatsFavouriteView(isFavourite: true, duration: 90, popularity: 0.75)
     }
 }

@@ -22,7 +22,7 @@ struct MovieDetailScreenView: View {
 
     var body: some View {
         ScrollView {
-            MovieHeaderView(isFavourite: $model.isFavourite, movie: model.movie)
+            MovieHeaderView(isFavourite: false, movie: model.movie)
 
             Text(model.movie.overview ?? "")
                 .frame(maxWidth: .infinity, alignment: .leading)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieHeaderView: View {
-    @Binding var isFavourite: Bool
+    var isFavourite: Bool
 
     let movie: Movie
 
@@ -27,7 +27,7 @@ struct MovieHeaderView: View {
                     PopularityGadgetView(popularity: movie.popularityPercentage, size: .large)
 
                     MovieHeaderStatsFavouriteView(
-                        isFavourite: $isFavourite,
+                        isFavourite: isFavourite,
                         duration: movie.runtime,
                         popularity: movie.popularityPercentage
                     )
@@ -48,6 +48,6 @@ struct MovieHeaderView: View {
 
 struct MovieHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieHeaderView(isFavourite: .constant(true), movie: .blackPantherMock)
+        MovieHeaderView(isFavourite: true, movie: .blackPantherMock)
     }
 }

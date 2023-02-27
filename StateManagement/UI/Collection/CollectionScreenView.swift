@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CollectionScreenView: View {
-    @EnvironmentObject var navigationModel: NavigationModel
-    @StateObject var model: CollectionViewModel = .init()
+    var navigationModel: NavigationModel = .init()
+    var model: CollectionViewModel = .init()
 
-    @State var layoutMode: LayoutMode = .regular
+    var layoutMode: LayoutMode = .regular
 
     var columns: [GridItem] {
         Array(repeating: GridItem(), count: layoutMode.numberOfColumns)
@@ -24,7 +24,7 @@ struct CollectionScreenView: View {
                     CollectionMovieItemView(movie: movie)
                         .aspectRatio(0.5, contentMode: .fit)
                         .onTapGesture {
-                            navigationModel.path.append(Route.detail(movie))
+                            // TODO: Push to navigation
                         }
                 }
             }
@@ -33,13 +33,13 @@ struct CollectionScreenView: View {
             Spacer()
         }
         .task {
-            await model.loadItems()
+            // TODO: Load data
         }
         .navigationTitle("Movies")
         .toolbar {
             Button(action: {
                 withAnimation {
-                    layoutMode = layoutMode.oposite
+                    // TODO: Change layout
                 }
             }) {
                 Image(systemName: "square.grid.\(layoutMode.oposite.numberOfColumns)x3.fill")

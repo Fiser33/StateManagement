@@ -7,11 +7,11 @@
 
 import Foundation
 
-class CollectionViewModel: ObservableObject {
+class CollectionViewModel {
     @Dependency(DependencyContainer.apiRepository) var apiRepository: ApiRepository
 
-    @Published var movies: [Movie] = []
-    @Published var error: Error?
+    var movies: [Movie] = [.blackPantherMock]
+    var error: Error?
 
     func loadItems() async {
         do {
