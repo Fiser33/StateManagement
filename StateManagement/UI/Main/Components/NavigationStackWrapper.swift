@@ -23,9 +23,7 @@ struct NavigationStackWrapper: View {
                 .eraseToAnyView()
                 .navigationDestination(for: Route.self, destination: { route in
                     route.view.eraseToAnyView()
-                        .environmentObject(navigationModel)
                 })
-                .environmentObject(navigationModel)
         }
     }
 }

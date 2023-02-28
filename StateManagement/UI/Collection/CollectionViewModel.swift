@@ -14,6 +14,7 @@ class CollectionViewModel {
     var error: Error?
 
     func loadItems() async {
+        print(#function)
         do {
             let movies = try await apiRepository.getMovies()
             await MainActor.run {
